@@ -3,7 +3,7 @@ import sys, os
 def fact_curator():
     #current_working_dir: str = os.getcwd()
 
-    topics = ["frank ocean", "channel orange", "blonde", "nostalgia ultra", "endless", "blonded radio"]
+    topics = ["frank ocean", "channel orange", "blonde ", "nostalgia ultra", "endless", "blonded radio"]
 
     knowledge_base = open("knowledge_base.txt", 'r', encoding='utf-8')
     
@@ -16,14 +16,16 @@ def fact_curator():
             break
         else:
             with open(filename, "a", encoding='utf-8') as f_out:
-                f_out.write("\n*" + topics[topic] + "*\n")
+                f_out.write(topics[topic] + "\n")
                 for line in knowledge_base:
                     if topics[topic] in line:
                         out = line
                         out = ' '.join(out.split())
                         f_out.write(out + "\n")
                         fact_count += 1
-                    if fact_count == 11:
+                    if fact_count == 11 and topic < (len(topics)-1):
+                        f_out.write("*" + "\n")                        
+                    if fact_count == 11: 
                         break
 
     """
