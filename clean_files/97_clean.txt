@@ -1,0 +1,3 @@
+enter a page name to see changes on pages linked to or from that page.
+(to see members of a category, enter category:name of category).
+changes to pages on your watchlist are shown in bold with a green bullet.

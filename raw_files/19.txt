@@ -1,0 +1,95 @@
+Odd Future’s most recognizable members Tyler, the Creator and Frank Ocean recently went in front of the lens to film a video for “She,” the second single from Tyler’s solo album Goblin (May 10).  The OFWGKTA frontman shot scenes in a Los Angeles neighborhood with a pretty young thing as his leading lady.Singer-songwriter Ocean played double duty as a cop and “the man of the house,” almost unrecognizable in a white wig and drab attire.  In one of the more chilling images, Tyler stares into the camera as a gun is pointed at his head, wearing the same black contacts he sported in his viral sensation “Yonkers.”Browse more pics from the Odd Future clan’s shoot below.
+
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 33%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Frank Ocean via fersher.]Tweets by RapUp Tory Lanez and Joyner Lucas are going bar for bar.
+
+During an Instagram Live session, the Love Me Now? rapper-singer ignited …Tory Lanez wants more smoke.
+
+In the midst of a rap battle with Joyner Lucas, the "MiAMi" rapper-singer has set his …Cardi B is making more money moves.
+
+The chart-topping rapper has purchased a multi-million-dollar "dream home" for her mother in her …Tekashi 6ix9ine is spending Thanksgiving in a federal facility.
+
+The "FEFE" rapper has been transferred from Brooklyn's Metropolitan Detention Center to …6ix9ine is not receiving any special treatment as he awaits his bail hearing.
+
+The rapper's lawyer, Lance Lazzaro, tells TMZ that …6ix9ine's album has been put on hold.
+
+Following his arrest on racketeering and firearms charges, the rapper's debut album Dummy Boy …Round 3. Joyner Lucas and Tory Lanez's rap battle continues with yet another remix.
+
+Following Tory's "Lucky You" freestyle and their …While he awaits his bail hearing, 6ix9ine is sparking more controversy for ordering a hit on Chief Keef's cousin.
+
+In the …Nicki Minaj and Lil Wayne have another collaboration on the way.
+
+Young Money royalty will reunite on the remix to Nicki's …Mariah Carey is eyeing an all-star collaboration with two of the biggest female MCs.
+
+During her appearance on Bravo's "Watch What …While he awaits his bail hearing, 6ix9ine is sparking more controversy for ordering a hit on Chief Keef's cousin.
+
+In the …Go Kelly go! Five years since her last album, Kelly Rowland returned with new music on Thanksgiving night. 
+
+On the …This that Z sh*t. Kodak Black celebrates Black Friday by unleashing a video for his hit "ZEZE" featuring Travis Scott …Round 3. Joyner Lucas and Tory Lanez's rap battle continues with yet another remix.
+
+Following Tory's "Lucky You" freestyle and their …Meek Mill is giving his fans new music this Thanksgiving.
+
+As he gears up for his new album Championships next week, …Tekashi 6ix9ine is spending Thanksgiving in a federal facility.
+
+The "FEFE" rapper has been transferred from Brooklyn's Metropolitan Detention Center to …Nicki Minaj is standing by 6ix9ine's side.
+
+Following his indictment for racketeering, armed robbery, and drug trafficking, the embattled MC is …H.E.R. paid tribute to the King of Pop during her stirring late-night performance on "Jimmy Kimmel Live!"
+
+With a guitar in …Tory Lanez wants more smoke.
+
+In the midst of a rap battle with Joyner Lucas, the "MiAMi" rapper-singer has set his …Kanye West is giving back this Thanksgiving.
+
+During her appearance on "The Ellen DeGeneres Show," Kim Kardashian announced that West, Yeezy, …%post_excerpt%
+
+Game's son may be following in his dad's showbiz footsteps.  The "Red Nation" rapper posted a video of his …
+
+Game's son may be following in his dad's showbiz footsteps.  The "Red Nation" rapper posted a video of his …
+
+Adrienne Bailon is singing a new tune.  After attempting to go solo, the former Cheetah Girl is switching up …
+
+Adrienne Bailon is singing a new tune.  After attempting to go solo, the former Cheetah Girl is switching up …

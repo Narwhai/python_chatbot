@@ -1,0 +1,2 @@
+initial visibility: currently defaults to autocollapse to set this template's initial visibility, the |state= parameter may be used: if the |state= parameter in the template on this page is not set, the template's initial visibility is taken from the |default= parameter in the collapsible option template.
+for the template on this page, that currently evaluates to autocollapse.
