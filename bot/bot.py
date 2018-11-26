@@ -9,7 +9,7 @@ import fact_responses
 import create_response
 from textblob import TextBlob
 
-"""Logging is useful for debugging"""
+"""Logging is useful for debugging but not necessary for functionality"""
 #importing logging 
 #logging.basicConfig()
 #logger = logging.getLogger()
@@ -18,7 +18,6 @@ from textblob import TextBlob
 # GLOBAL VARIABLES 
 running = True
 known_user = False 
-used_facts = {}
 memory = {}
 
 FACT_WORDS = ["frank ocean", "channel orange", "blonde", "nostalgia ultra", "endless", "blonded radio"]
@@ -38,6 +37,8 @@ NONE_RESPONSES = [ "What can I help you with?",
                     "Ask me about Frank Ocean!",
                     "What do you want to know about Frank Ocean?"]
 
+# List of songs by Frank Ocean. Got this idea super last minute so it's very small.
+# Might be able to create an extensive list using the Genius API
 SONGS = ["thinking bout you", "biking", "chanel", "start", "fertilizer", "provider", "moon river", "lens", "slide"]
 
 

@@ -16,6 +16,8 @@ defaults = {
         'search_fail': 'I couldn\'t find the lyrics for that song :(',
     }
 }
+
+
 # Pulls song information from Genius, returns a URL from which lyrics can be scrapped
 def request_song_info(song_title, artist_name):
     base_url = defaults['request']['base_url']
@@ -26,6 +28,8 @@ def request_song_info(song_title, artist_name):
 
     return response
 
+
+# Scraps lyrics from the URL found 
 def scrap_song_url(url):
     page = requests.get(url)
     html = BeautifulSoup(page.text, 'html.parser')
@@ -34,6 +38,8 @@ def scrap_song_url(url):
 
     return lyrics
 
+
+# Calls the other functions to ultimately get the requested song lyrics and return them
 def get_lyrics(song_title, artist_name):
 
     # Search for matches in request response
@@ -53,13 +59,8 @@ def get_lyrics(song_title, artist_name):
 
         response = ("Here are the lyrics for: " + song_title.capitalize() + " by " + artist_name)
         response += lyrics
-        #print(lyric_response)
         return response
 
-        #write_lyrics_to_file(lyrics, song_title, artist_name)
-
-        #print(lyrics)
     else:
         response = defaults['message']['search_fail']
         return response
-    #return response

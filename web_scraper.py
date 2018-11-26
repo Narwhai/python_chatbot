@@ -5,85 +5,26 @@ import string
 import requests
 import nltk
 import data_extraction
-#import dialogflow
 from nltk import tokenize
 from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
 
 # Name: Roman Soriano
-# CS 4301.001 - NLP Project 1: Phase 1
-# Web scraper that finds URL's related to artist Frank Ocean 
-# starting from his wikipedia page.
+# Web scraper that finds URL's related to artist Frank Ocean starting from his wikipedia page. 
+# Every relevant URL found on the page is then scraped and saved to a text file. These files are
+# later cleaned up to find the top 40 most frequent terms found accross all pages scraped. 
 # 
+# The initial scrape takes a little bit as some of the pages take a little while to be loaded
+#
 # Needs to be optimized. Each function was created as a separate file during 
 # development so I wouldn't have to run the entire program each time I was testing.
 # 
-# I left some print statements commented for demoing purposes
+
 
 # GLOBALS
 current_working_dir: str = os.getcwd()
 
-"""
-def fact_curator():
-
-    topics = ["frank ocean", "channel orange", "blonde ", "nostalgia ultra", "endless", "blonded radio"]
-    filename = "facts.txt"
-    dir_path = os.path.join(current_working_dir, "files")
-    file_write = os.path.join(dir_path, filename)
-    file_read = os.path.join(dir_path, "knowledge_base.txt")
-    
-    knowledge_base = open(file_read, 'r', encoding='utf-8')
-    
-    for topic in range(len(topics)):
-        knowledge_base.seek(0)
-        if topic >= len(topics):  
-            break
-        else:
-            with open(file_write, "a", encoding='utf-8') as f_out:
-                f_out.write(topics[topic] + "\n")
-                for line in knowledge_base:
-                    if topics[topic] in line:
-                        out = line
-                        out = ' '.join(out.split())
-                        f_out.write(out + "\n")
-                f_out.write("*\n")
-
-def knowledge_base_creator():
-    
-    fact_words = ["frank", "ocean", "orange", "blonde", "endless", "nostalgia", "ultra", "album",
-                    "mixtape", "release", "name", "lyrics", "genre", "rb ", " rb", "r&b", "music", "born",
-                    "birth", "california", "topic", "production", "instrumentation","recording",
-                    "contract", "studio", "single", "vocal","christopher", "lonny", "breaux" ,
-                    "francis", "edwin", "musical", "career", "future", "style", "wrote", "write",
-                    "song", "songs", "cover", "art", "label", "channel", "influenced", "influence",
-                    "released", "release", "acclaim", "critical", "def", "jam", "tour", "date", "blonded",
-                    "radio", "beats1", "interview", "beats", "birthday", "grammy", "video", "mtv", "written"
-                    "deal", "songwriting", "oceans" "franks", "tracks", "track", "featuring", "billboard", 
-                    "billboards"]    
-
-    current_working_dir: str = os.getcwd()
-    path = os.path.join(current_working_dir, "clean_files")
-    #print("Path in KBC: " + path)
-    for file in os.listdir(path):
-        filename = path + "\\" + os.fsdecode(file)
-        #print("Filename: " + filename)
-        #file_write = os.path.join(current_working_dir, "knowledge_base")
-        with open(filename, "r", encoding='utf=8') as f_in:
-            text = f_in.read()
-            tokens = nltk.sent_tokenize(text)
-            file_write = os.path.join(current_working_dir, "files")
-            file_write = os.path.join(file_write, "knowledge_base.txt")
-            os.makedirs(os.path.dirname(file_write), exist_ok=True)
-            with open(file_write, "a", encoding='utf=8') as f_out:
-                for token in tokens:
-                    #print("****Sentence: " + token)
-                    if any(word in token for word in fact_words):
-                        token = token.translate(str.maketrans('','',string.punctuation))
-                        #print("*****Token: " + token)
-                        f_out.write(token + '\n')
-"""
-
-# Creates a dictionary of the most frequently used terms in the 15 clean files
+# Creates a dictionary of the most frequently used terms in the clean files
 # accross all of the files
 def term_extraction():
 
@@ -94,11 +35,7 @@ def term_extraction():
 
     # Iterates through each file and processes them further before
     # creating a dictionary with all of the terms and their frequency
-    #for x in range(15):
-    #    file_read = os.path.join(current_working_dir, "clean_files")
-    #    filename = str(x) + "_clean.txt"
-    #    file_read = os.path.join(file_read, filename)
-        # print(file_read)
+
     for file in os.listdir(path):
         file_read = path + "\\" + os.fsdecode(file)
         with open(file_read, "r", encoding='utf-8') as f_in:
@@ -112,7 +49,6 @@ def term_extraction():
             text = text.translate(str.maketrans('','',string.punctuation))
             tokens = nltk.word_tokenize(text)
             tokens = [w for w in tokens if not w in stop]
-            # print(tokens)
             # Creates a dictionary of the terms found in the text
             for word in tokens:
                 if word in term_dict:
@@ -120,22 +56,19 @@ def term_extraction():
                 else:
                     term_dict[word] = 1
 
-    # Sorts the dictionary and outputs the top 25 most frequent words
+    # Sorts the dictionary and outputs the top 40 most frequent words
     sorted_dict = sorted(term_dict.items(), key=lambda kv: kv[1], reverse=True)
     for x in range(40):
         print(str(x+1) + ": " + str(sorted_dict[x]))
 
-# Takes the 15 files from the web scraping and cleans them up and splits them into sentences.
+# Takes the files from the web scraping and cleans them up and splits them into sentences.
 # The sentences from each file are output to a new file
 def file_cleanup():
 
-    #current_working_dir: str = os.getcwd()
     path = os.path.join(current_working_dir, "raw_files\\")
 
     # Iterates through each file and cleans them up, saving the sentences
     # in the text to new files in a new directory.
-        
-    #for x in range(15):
     for file in os.listdir(path):
         file_read = path + "\\" + os.fsdecode(file)
         file_write = os.path.join(current_working_dir, "clean_files")
@@ -146,16 +79,12 @@ def file_cleanup():
             text = f_in.read()
             text = text.lower()
             text = text.replace('"', '')
-            #text = text.replace(".", ".\n")
             text = text.replace("’", "")
             text = text.replace('“', "")
             text = text.replace('”', "")
             text =  re.sub(r'\[.*\]', '', text)
             text = ' '.join(text.split())
-            #text = text.replace(",", " ")
-            #text = text.replace(".", ".\n")
             tokens = nltk.sent_tokenize(text)
-            # print(tokens)
             with open(file_write, 'w', encoding='utf-8') as f_out:
                  for token in tokens:
                     #token = token.translate(str.maketrans('','',string.punctuation))
@@ -165,8 +94,6 @@ def file_cleanup():
 # These URL's are stored in a list, and the first 15
 # have the text from them scraped and output to files
 def web(page,WebUrl):
-    
-    #current_working_dir: str = os.getcwd()
 
     if(page>0):
         url = WebUrl
@@ -182,11 +109,8 @@ def web(page,WebUrl):
         for link in s.findAll('a', attrs={'href': re.compile("^http://")}):
             link_url = link.get('href')
             if any(substring in link_url for substring in topic_words):
-                # link_title = link.get('title')
-                # print(link_title)
                 if link_url not in links:
                     links.append(link_url)
-                    # print(link_url)
 
         # The links that pointed to another wiki page were not a full URL,
         # so searching for "http://" didn't work to get them.
@@ -199,15 +123,16 @@ def web(page,WebUrl):
                 #  Makes each wiki link into a proper URL
                 if link_url.startswith('/wiki/'):
                     link_url = "https://en.wikipedia.org" + link_url
+                # Filters out non-english wikipedia pages
                 if "wikipedia" in link_url and not link_url.startswith('https://en.'):
                     continue
                 if link_url not in links:
                     links.append(link_url)
-                    #print(link_url)
 
-        #print(len(links))
         # Outputs text from URL into a file 
         for x in range(len(links)):
+            # Tries to get a response from url, if no response is received (dead link etc.)
+            # then it is ignored and execution continues
             try:
                 link_code = requests.get(links[x])
             except:
@@ -215,7 +140,6 @@ def web(page,WebUrl):
             soup2 = BeautifulSoup(link_code.content, 'html.parser')
             file_write = os.path.join(current_working_dir, "raw_files")
             filename = str(x) + ".txt"
-            #print(file_write)
             file_write = os.path.join(file_write, filename)
             os.makedirs(os.path.dirname(file_write), exist_ok=True)
             with open(file_write, 'w', encoding='utf-8') as f_out:
@@ -223,8 +147,9 @@ def web(page,WebUrl):
                     f_out.write(text.getText())
 
 
+# Just calls all the other functions, I'm sure this can be improved
 def main():
-    #current_working_dir: str = os.getcwd()
+
     web(1, 'https://en.wikipedia.org/wiki/Frank_Ocean')
     file_cleanup()
     term_extraction()
