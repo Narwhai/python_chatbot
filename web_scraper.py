@@ -4,7 +4,8 @@ import re
 import string
 import requests
 import nltk
-import dialogflow
+import data_extraction
+#import dialogflow
 from nltk import tokenize
 from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
@@ -18,6 +19,34 @@ from bs4 import BeautifulSoup
 # development so I wouldn't have to run the entire program each time I was testing.
 # 
 # I left some print statements commented for demoing purposes
+
+# GLOBALS
+current_working_dir: str = os.getcwd()
+
+"""
+def fact_curator():
+
+    topics = ["frank ocean", "channel orange", "blonde ", "nostalgia ultra", "endless", "blonded radio"]
+    filename = "facts.txt"
+    dir_path = os.path.join(current_working_dir, "files")
+    file_write = os.path.join(dir_path, filename)
+    file_read = os.path.join(dir_path, "knowledge_base.txt")
+    
+    knowledge_base = open(file_read, 'r', encoding='utf-8')
+    
+    for topic in range(len(topics)):
+        knowledge_base.seek(0)
+        if topic >= len(topics):  
+            break
+        else:
+            with open(file_write, "a", encoding='utf-8') as f_out:
+                f_out.write(topics[topic] + "\n")
+                for line in knowledge_base:
+                    if topics[topic] in line:
+                        out = line
+                        out = ' '.join(out.split())
+                        f_out.write(out + "\n")
+                f_out.write("*\n")
 
 def knowledge_base_creator():
     
@@ -42,7 +71,9 @@ def knowledge_base_creator():
         with open(filename, "r", encoding='utf=8') as f_in:
             text = f_in.read()
             tokens = nltk.sent_tokenize(text)
-            file_write = os.path.join(current_working_dir, "knowledge_base.txt")
+            file_write = os.path.join(current_working_dir, "files")
+            file_write = os.path.join(file_write, "knowledge_base.txt")
+            os.makedirs(os.path.dirname(file_write), exist_ok=True)
             with open(file_write, "a", encoding='utf=8') as f_out:
                 for token in tokens:
                     #print("****Sentence: " + token)
@@ -50,13 +81,13 @@ def knowledge_base_creator():
                         token = token.translate(str.maketrans('','',string.punctuation))
                         #print("*****Token: " + token)
                         f_out.write(token + '\n')
-
+"""
 
 # Creates a dictionary of the most frequently used terms in the 15 clean files
 # accross all of the files
 def term_extraction():
 
-    current_working_dir: str = os.getcwd()
+    #current_working_dir: str = os.getcwd()
     path = os.path.join(current_working_dir, "clean_files\\")
     stop = set(stopwords.words("english"))
     term_dict = {}
@@ -98,7 +129,7 @@ def term_extraction():
 # The sentences from each file are output to a new file
 def file_cleanup():
 
-    current_working_dir: str = os.getcwd()
+    #current_working_dir: str = os.getcwd()
     path = os.path.join(current_working_dir, "raw_files\\")
 
     # Iterates through each file and cleans them up, saving the sentences
@@ -135,7 +166,7 @@ def file_cleanup():
 # have the text from them scraped and output to files
 def web(page,WebUrl):
     
-    current_working_dir: str = os.getcwd()
+    #current_working_dir: str = os.getcwd()
 
     if(page>0):
         url = WebUrl
@@ -174,7 +205,7 @@ def web(page,WebUrl):
                     links.append(link_url)
                     #print(link_url)
 
-        print(len(links))
+        #print(len(links))
         # Outputs text from URL into a file 
         for x in range(len(links)):
             try:
@@ -197,7 +228,8 @@ def main():
     web(1, 'https://en.wikipedia.org/wiki/Frank_Ocean')
     file_cleanup()
     term_extraction()
-    knowledge_base_creator()
+    data_extraction.knowledge_base_creator()
+    data_extraction.fact_curator()
 
 
 if __name__ == "__main__":
